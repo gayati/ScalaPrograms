@@ -317,7 +317,7 @@ object Utility {
     array
   }
    
-   def insertionSort(array: Array[Int]): Array[Int] = {
+   def insertionSort[T <% Ordered[T]](array: Array[T]): Array[T] = {
   for (i <- 1 until array.length) {
     // A[ i ] is added in the sorted sequence A[0, .. i-1]
     // save A[i] to make a hole at index iHole
@@ -338,7 +338,14 @@ object Utility {
   
   
   
-  
+   def toBinary(n: Int, bin: List[Int]): List[Int] = {
+      if (n / 2 == 1) (1 :: (n % 2) :: bin)
+      else {
+        val r = n % 2
+        val q = n / 2
+        toBinary(q, r :: bin)
+      }
+    }
   
   
   
